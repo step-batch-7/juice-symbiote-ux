@@ -5,7 +5,7 @@ const date = new Date();
 
 describe("updateRecord", function() {
   it("it should create transaction table object if transaction is entered by the employe", function() {
-    const actualValue = [
+    const userArgs = [
       "--beverage",
       "orange",
       "--empId",
@@ -13,14 +13,29 @@ describe("updateRecord", function() {
       "--quantity",
       "1"
     ];
+    const fileContent = "{}";
+    const actualValue = updateRecord(
+      userArgs,
+      fileContent,
+      path,
+      date,
+      function(path, content, encoder) {
+        assert.strictEqual(path, "./testForWrite.json");
+        assert.strictEqual(
+          content,
+          `{"1":[{"empId":"1","beverage":"orange","qty":"1","date":"${date.toJSON()}"}]}`
+        );
+        assert.strictEqual(encoder, "utf8");
+      }
+    );
     const expectedValue =
       "Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n" +
       "1,orange,1," +
       date.toJSON();
-    assert.strictEqual(updateRecord(actualValue, path, date), expectedValue);
+    assert.strictEqual(actualValue, expectedValue);
   });
   it("it should first make a new array to the empId, then save the transaction if entry is made by new employee", function() {
-    const actualValue = [
+    const userArgs = [
       "--beverage",
       "orange",
       "--empId",
@@ -28,25 +43,48 @@ describe("updateRecord", function() {
       "--quantity",
       "1"
     ];
+    const fileContent = `{"1":[{"empId":"1","beverage":"orange","qty":"1","date":"${date.toJSON()}"}]}`;
+    const actualValue = updateRecord(
+      userArgs,
+      fileContent,
+      path,
+      date,
+      function(path, content, encoder) {
+        assert.strictEqual(path, "./testForWrite.json");
+        assert.strictEqual(
+          content,
+          `{"1":[{"empId":"1","beverage":"orange","qty":"1","date":"${date.toJSON()}"}],"2":[{"empId":"2","beverage":"orange","qty":"1","date":"${date.toJSON()}"}]}`
+        );
+        assert.strictEqual(encoder, "utf8");
+      }
+    );
     const expectedValue =
       "Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n" +
       "2,orange,1," +
       date.toJSON();
-    assert.strictEqual(updateRecord(actualValue, path, date), expectedValue);
+    assert.strictEqual(actualValue, expectedValue);
   });
   it("it should create transaction table object if transaction is entered by the employe", function() {
-    const actualValue = [
-      "--beverage",
-      "lemon",
-      "--empId",
-      "1",
-      "--quantity",
-      "1"
-    ];
+    const userArgs = ["--beverage", "lemon", "--empId", "1", "--quantity", "1"];
+    const fileContent = `{"1":[{"empId":"1","beverage":"orange","qty":"1","date":"${date.toJSON()}"}],"2":[{"empId":"2","beverage":"orange","qty":"1","date":"${date.toJSON()}"}]}`;
+    const actualValue = updateRecord(
+      userArgs,
+      fileContent,
+      path,
+      date,
+      function(path, content, encoder) {
+        assert.strictEqual(path, "./testForWrite.json");
+        assert.strictEqual(encoder, "utf8");
+        assert.strictEqual(
+          content,
+          `{"1":[{"empId":"1","beverage":"orange","qty":"1","date":"${date.toJSON()}"},{"empId":"1","beverage":"lemon","qty":"1","date":"${date.toJSON()}"}],"2":[{"empId":"2","beverage":"orange","qty":"1","date":"${date.toJSON()}"}]}`
+        );
+      }
+    );
     const expectedValue =
       "Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n" +
       "1,lemon,1," +
       date.toJSON();
-    assert.strictEqual(updateRecord(actualValue, path, date), expectedValue);
+    assert.strictEqual(actualValue, expectedValue);
   });
 });

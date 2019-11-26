@@ -15,7 +15,7 @@ describe("readFile", function() {
     };
     assert.deepStrictEqual(
       readFile("correctPath", "utf8", reader, isExists),
-      {}
+      "{}"
     );
   });
   it("when path exist,it should return content of file ", function() {

@@ -1,4 +1,3 @@
-const readRecord = require("./updateRecord").readRecord;
 const fs = require("fs");
 
 const giveTrasactionDetails = function(transaction) {
@@ -9,9 +8,9 @@ const countJuice = function(total, details) {
   return total + +details[2];
 };
 
-const giveTransactionsRecord = function(userArgs, path) {
-  if (fs.existsSync(path)) {
-    const juiceTransactionsRecord = readRecord(path);
+const giveTransactionsRecord = function(userArgs, fileContent) {
+  const juiceTransactionsRecord = JSON.parse(fileContent);
+  if (Object.keys(juiceTransactionsRecord).includes(userArgs[1])) {
     let empJuiceTransacsactions = juiceTransactionsRecord[userArgs[1]];
     let transacsationList = empJuiceTransacsactions.map(giveTrasactionDetails);
     let totalJuice = transacsationList.reduce(countJuice, 0);
