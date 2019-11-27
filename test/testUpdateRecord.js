@@ -23,7 +23,7 @@ describe("updateRecord", function() {
         assert.strictEqual(path, "./testForWrite.json");
         assert.strictEqual(
           content,
-          `[{"--empId":"1","--beverage":"orange","--qty":"1","date":"${date.toJSON()}"}]`
+          `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date.toJSON()}"}]`
         );
         assert.strictEqual(encoder, "utf8");
       }
@@ -43,7 +43,7 @@ describe("updateRecord", function() {
       "--quantity",
       "1"
     ];
-    const fileContent = `[{"--empId":"1","--beverage":"orange","--qty":"1","date":"${date}"}]`;
+    const fileContent = `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date}"}]`;
     const actualValue = updateRecord(
       userArgs,
       fileContent,
@@ -53,7 +53,7 @@ describe("updateRecord", function() {
         assert.strictEqual(path, "./testForWrite.json");
         assert.strictEqual(
           content,
-          `[{"--empId":"1","--beverage":"orange","--qty":"1","date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","date":"${date.toJSON()}"}]`
+          `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","--date":"${date.toJSON()}"}]`
         );
         assert.strictEqual(encoder, "utf8");
       }
@@ -66,7 +66,7 @@ describe("updateRecord", function() {
   });
   it("it should create transaction table object if transaction is entered by the employe", function() {
     const userArgs = ["--beverage", "lemon", "--empId", "1", "--quantity", "1"];
-    const fileContent = `[{"--empId":"1","--beverage":"orange","--qty":"1","date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","date":"${date}"}]`;
+    const fileContent = `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","--date":"${date}"}]`;
     const actualValue = updateRecord(
       userArgs,
       fileContent,
@@ -77,7 +77,7 @@ describe("updateRecord", function() {
         assert.strictEqual(encoder, "utf8");
         assert.strictEqual(
           content,
-          `[{"--empId":"1","--beverage":"orange","--qty":"1","date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","date":"${date}"},{"--empId":"1","--beverage":"lemon","--qty":"1","date":"${date.toJSON()}"}]`
+          `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date}"},{"--empId":"2","--beverage":"orange","--qty":"1","--date":"${date}"},{"--empId":"1","--beverage":"lemon","--qty":"1","--date":"${date.toJSON()}"}]`
         );
       }
     );

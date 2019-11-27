@@ -16,7 +16,7 @@ const updateRecord = function(userArgs, fileContent, path, date, writer) {
     details["--empId"],
     details["--beverage"],
     details["--qty"],
-    details.date.toJSON()
+    details["--date"].toJSON()
   ];
   return title + message.join(",");
 };

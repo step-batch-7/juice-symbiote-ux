@@ -3,7 +3,7 @@ const createStructure = function(userArgs, date) {
   table["--empId"] = userArgs[3];
   table["--beverage"] = userArgs[1];
   table["--qty"] = userArgs[5];
-  table.date = date;
+  table["--date"] = date;
   return table;
 };
 
