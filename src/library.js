@@ -3,7 +3,7 @@ const assert = require("assert");
 
 const readFile = function(path, encoder, reader, isExist) {
   if (!isExist(path)) {
-    return "{}";
+    return "[]";
   }
   return reader(path, encoder);
 };
