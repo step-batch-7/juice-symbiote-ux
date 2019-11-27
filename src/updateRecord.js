@@ -12,7 +12,12 @@ const updateRecord = function(userArgs, fileContent, path, date, writer) {
   const details = getStructure(userArgs, date);
   fillEntriesInRecord(details, path, fileContent, writer);
   const title = "Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n";
-  const message = [details.empId, details.beverage, details.qty, details.date];
+  const message = [
+    details["--empId"],
+    details["--beverage"],
+    details["--qty"],
+    details.date.toJSON()
+  ];
   return title + message.join(",");
 };
 exports.updateRecord = updateRecord;

@@ -1,25 +1,22 @@
-const fs = require("fs");
-
-const giveTrasactionDetails = function(transaction) {
-  return Object.values(transaction);
+const giveEmpTransacs = function(key, value) {
+  return function(details) {
+    return (
+      details[key] == value ||
+      new Date(details["date"]).toJSON().slice(0, 10) == value
+    );
+  };
 };
-
-const countJuice = function(total, details) {
-  return total + +details[2];
-};
-
 const giveTransactionsRecord = function(userArgs, fileContent) {
-  const juiceTransactionsRecord = JSON.parse(fileContent);
-  if (Object.keys(juiceTransactionsRecord).includes(userArgs[1])) {
-    let empJuiceTransacsactions = juiceTransactionsRecord[userArgs[1]];
-    let transacsationList = empJuiceTransacsactions.map(giveTrasactionDetails);
-    let totalJuice = transacsationList.reduce(countJuice, 0);
-    const title = "Employee ID, Beverage, Quantity, Date\n";
-    let message = transacsationList.join("\n");
-    const footer = "\nTotal: " + totalJuice + " Juice";
-    return title + message + footer;
+  let juiceTransactionsRecord = JSON.parse(fileContent);
+  let giveTransactionsForOneEmp = giveEmpTransacs(userArgs[0], userArgs[1]);
+  let empTransactions = juiceTransactionsRecord.filter(
+    giveTransactionsForOneEmp
+  );
+  if (userArgs.length <= 2) {
+    return empTransactions;
   }
-  return "No Record";
+  let giveEmpTransactions = giveEmpTransacs(userArgs[2], userArgs[3]);
+  empTransactions = juiceTransactionsRecord.filter(giveEmpTransactions);
+  return empTransactions;
 };
-
 exports.giveTransactionsRecord = giveTransactionsRecord;
