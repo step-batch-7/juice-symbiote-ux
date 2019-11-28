@@ -3,7 +3,6 @@ const lib = require("../src/library.js");
 const readFile = lib.readFile;
 const writeFile = lib.writeFile;
 
-//------------------------------------------------------------testing read file -------------
 describe("readFile", function() {
   it("it should check path given to isExist is correct, if path doesn't exist return empty object", function() {
     const isExists = function(path) {
@@ -33,8 +32,6 @@ describe("readFile", function() {
     );
   });
 });
-
-//--------------------------test write -----------------------
 
 describe("writeFile", function() {
   it("should check for the correct path, encoder and should return content of the file", function() {

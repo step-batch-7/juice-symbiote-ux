@@ -11,7 +11,7 @@ describe("giveTransactionsRecord", function() {
       fileContent
     );
     const expectedValue =
-      "Employee ID,Beverage,Quantity,Date\n23456,Orange,2,2019-11-24T13:01:48.235Z\nTotal :2juice";
+      "Employee ID,Beverage,Quantity,Date\n23456,Orange,2,2019-11-24T13:01:48.235Z\nTotal :2 juices";
     assert.deepStrictEqual(actualValue, expectedValue);
   });
 
@@ -21,7 +21,7 @@ describe("giveTransactionsRecord", function() {
     const actualValue = giveTransactionsRecord(["--empId", "234"], fileContent);
     assert.deepStrictEqual(
       actualValue,
-      "Employee ID,Beverage,Quantity,Date\nTotal :0juice"
+      "Employee ID,Beverage,Quantity,Date\nTotal :0 juices"
     );
   });
 
@@ -33,7 +33,7 @@ describe("giveTransactionsRecord", function() {
       fileContent
     );
     const expectedValue =
-      "Employee ID,Beverage,Quantity,Date\n23456,Orange,2,2019-11-24T13:01:48.235Z\n23456,Orange,2,2019-11-24T13:01:48.235Z\nTotal :4juice";
+      "Employee ID,Beverage,Quantity,Date\n23456,Orange,2,2019-11-24T13:01:48.235Z\n23456,Orange,2,2019-11-24T13:01:48.235Z\nTotal :4 juices";
     assert.deepStrictEqual(actualValue, expectedValue);
   });
 });

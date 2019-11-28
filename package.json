@@ -1,12 +1,12 @@
 {
   "name": "anna-juice-ltd",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Beverage App for Anna Juice Ltd",
   "main": "beverage.js",
   "scripts": {
     "test": "nyc mocha"
   },
-  "author": "",
+  "author": "saurabh",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^6.2.2"

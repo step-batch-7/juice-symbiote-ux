@@ -10,10 +10,7 @@ const countJuice = function(totalQty, transaction) {
 };
 
 const chngObjectToString = function(message, element) {
-  return (
-    message +
-    `\n${element["--empId"]},${element["--beverage"]},${element["--qty"]},${element["--date"]}`
-  );
+  return `${message}\n${element["--empId"]},${element["--beverage"]},${element["--qty"]},${element["--date"]}`;
 };
 
 const generateQueryMessage = function(empTransactions) {
@@ -22,7 +19,7 @@ const generateQueryMessage = function(empTransactions) {
     chngObjectToString,
     "Employee ID,Beverage,Quantity,Date"
   );
-  return message + "\nTotal :" + totalJuice + "juice";
+  return `${message}\nTotal :${totalJuice} juices`;
 };
 
 const giveTransactionsRecord = function(userArgs, fileContent) {
