@@ -1,4 +1,3 @@
-const fs = require("fs");
 const getStructure = require("./createStructure.js").createStructure;
 const writeFile = require("./library").writeFile;
 
