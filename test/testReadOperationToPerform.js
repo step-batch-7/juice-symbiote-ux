@@ -6,11 +6,11 @@ const updateRecord = require("../src/updateRecord.js").updateRecord;
 const assert = require("assert");
 
 describe("readOperationToPerform", function() {
-  describe("it should give function reference", function() {
-    it("it should return updateRecord if the option is --save in user args", function() {
+  describe("it should give function reference as the user Args", function() {
+    it("it should give  updateRecord if the option is --save in user args", function() {
       assert.strictEqual(readOperationToPerform("--save"), updateRecord);
     });
-    it("it should return getTransQuery if the option is --query in user args", function() {
+    it("it should give getTransQuery if the option is --query in user args", function() {
       assert.strictEqual(
         readOperationToPerform("--query"),
         giveTransactionsRecord

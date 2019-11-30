@@ -9,5 +9,4 @@ const readOperationToPerform = function(operationName) {
   };
   return operations[operationName];
 };
-
 exports.readOperationToPerform = readOperationToPerform;

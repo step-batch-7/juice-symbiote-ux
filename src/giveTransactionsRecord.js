@@ -17,9 +17,9 @@ const generateQueryMessage = function(empTransactions) {
   const totalJuice = empTransactions.reduce(countJuice, 0);
   const message = empTransactions.reduce(
     chngObjectToString,
-    "Employee ID,Beverage,Quantity,Date"
+    "Employee ID, Beverage, Quantity, Date"
   );
-  return `${message}\nTotal :${totalJuice} juices`;
+  return `${message}\nTotal : ${totalJuice} Juices`;
 };
 
 const giveTransactionsRecord = function(userArgs, fileContent) {

@@ -7,9 +7,10 @@ const readFile = require("./src/library").readFile;
 const fs = require("fs");
 
 const main = function() {
-  const path = "./juiceTransactionsRecord.json";
+  const path = process.env.path || "./juiceTransactionsRecord.json";
   const fileContent = readFile(path, "utf8", fs.readFileSync, fs.existsSync);
-  const date = new Date();
+  const time = process.env.date || new Date().toJSON();
+  const date = new Date(time);
   const operationName = process.argv[2];
   const userArgs = process.argv.slice(3);
   const operation = readOperationToPerform(operationName);
