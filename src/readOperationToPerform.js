@@ -1,5 +1,5 @@
-const updateRecord = require("./updateRecord.js").updateRecord;
-const giveTransactionsRecord = require("./giveTransactionsRecord")
+const updateRecord = require(`./updateRecord.js`).updateRecord;
+const giveTransactionsRecord = require(`./giveTransactionsRecord`)
   .giveTransactionsRecord;
 
 const readOperationToPerform = function(operationName) {

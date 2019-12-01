@@ -1,0 +1,5 @@
+(export path="./appTest/readTestData.json"; node beverage.js --query --beverage Watermelon)
+Employee ID, Beverage, Quantity, Date
+11111,Watermelon,1,2019-11-20T05:50:28.267Z
+11112,Watermelon,1,2019-11-29T05:33:15.255Z
+Total : 2 Juices

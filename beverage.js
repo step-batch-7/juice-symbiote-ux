@@ -1,16 +1,16 @@
-const readOperationToPerform = require("./src/readOperationToPerform.js")
+const readOperationToPerform = require(`./src/readOperationToPerform.js`)
   .readOperationToPerform;
-const updateRecord = require("./src/updateRecord.js").updateRecord;
-const giveTransactionsRecord = require("./src/giveTransactionsRecord.js")
+const updateRecord = require(`./src/updateRecord.js`).updateRecord;
+const giveTransactionsRecord = require(`./src/giveTransactionsRecord.js`)
   .getTransQuery;
-const readFile = require("./src/library").readFile;
-const fs = require("fs");
+const readFile = require(`./src/library`).readFile;
+const fs = require(`fs`);
+const { timeStamp, dataStoredPath } = require(`./src/config`);
 
 const main = function() {
-  const path = process.env.path || "./juiceTransactionsRecord.json";
-  const fileContent = readFile(path, "utf8", fs.readFileSync, fs.existsSync);
-  const time = process.env.date || new Date().toJSON();
-  const date = new Date(time);
+  const path = dataStoredPath(process.env);
+  const fileContent = readFile(path, `utf8`, fs.readFileSync, fs.existsSync);
+  const date = timeStamp(process.env);
   const operationName = process.argv[2];
   const userArgs = process.argv.slice(3);
   const operation = readOperationToPerform(operationName);
