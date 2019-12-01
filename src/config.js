@@ -4,7 +4,7 @@ const timeStamp = env => {
 };
 
 const dataStoredPath = env => {
-  const path = process.env.path || `./juiceTransactionsRecord.json`;
+  const path = env.path || `./juiceTransactionsRecord.json`;
   return path;
 };
 module.exports = { timeStamp, dataStoredPath };
