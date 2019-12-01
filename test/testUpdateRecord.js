@@ -1,26 +1,26 @@
 const assert = require(`chai`).assert;
-const updateRecord = require("../src/updateRecord.js").updateRecord;
+const updateRecord = require(`../src/updateRecord.js`).updateRecord;
 const path = "./testForWrite.json";
 const date = new Date();
 
-describe("updateRecord", function() {
-  it("it should create transaction table object if transaction is entered by the employe", function() {
+describe(`updateRecord`, function() {
+  it(`it should create transaction table object if transaction is entered by the employe`, function() {
     const userArgs = [
       "--beverage",
-      "orange",
+      `orange`,
       "--empId",
-      "1",
+      `1`,
       "--quantity",
-      "1"
+      `1`
     ];
-    const fileContent = "[]";
+    const fileContent = `[]`;
     const actualValue = updateRecord(
       userArgs,
       fileContent,
       path,
       date,
       function(path, content, encoder) {
-        assert.strictEqual(path, "./testForWrite.json");
+        assert.strictEqual(path, `./testForWrite.json`);
         assert.strictEqual(
           content,
           `[{"--empId":"1","--beverage":"orange","--qty":"1","--date":"${date.toJSON()}"}]`
