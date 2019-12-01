@@ -1,9 +1,9 @@
+const assert = require(`chai`).assert;
 const readOperationToPerform = require("../src/readOperationToPerform.js")
   .readOperationToPerform;
 const giveTransactionsRecord = require("../src/giveTransactionsRecord.js")
   .giveTransactionsRecord;
 const updateRecord = require("../src/updateRecord.js").updateRecord;
-const assert = require("assert");
 
 describe("readOperationToPerform", function() {
   describe("it should give function reference as the user Args", function() {

@@ -1,6 +1,6 @@
-const giveTransactionsRecord = require("../src/giveTransactionsRecord.js")
+const assert = require(`chai`).assert;
+const giveTransactionsRecord = require(`../src/giveTransactionsRecord.js`)
   .giveTransactionsRecord;
-const assert = require("assert");
 
 describe("giveTransactionsRecord", function() {
   it("it should give the total transaction record of the employee as per the empId given in userArgs", function() {

@@ -1,4 +1,4 @@
-const assert = require("assert");
+const assert = require(`chai`).assert;
 const lib = require("../src/library.js");
 const readFile = lib.readFile;
 const writeFile = lib.writeFile;
