@@ -19,7 +19,9 @@ const generateQueryMessage = function(empTransactions) {
     chngObjectToString,
     `Employee ID, Beverage, Quantity, Date`
   );
-  return `${message}\nTotal : ${totalJuice} Juices`;
+  return `${message}\nTotal : ${totalJuice} ${
+    totalJuice == 1 ? "Juice" : "Juices"
+  }`;
 };
 
 const giveTransactionsRecord = function(userArgs, fileContent) {
