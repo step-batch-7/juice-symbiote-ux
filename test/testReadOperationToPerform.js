@@ -1,9 +1,8 @@
 const assert = require(`chai`).assert;
-const readOperationToPerform = require(`../src/readOperationToPerform.js`)
-  .readOperationToPerform;
-const giveTransactionsRecord = require(`../src/giveTransactionsRecord.js`)
-  .giveTransactionsRecord;
-const updateRecord = require(`../src/updateRecord.js`).updateRecord;
+const { giveTransactionsRecord } = require(`../src/giveTransactionsRecord.js`);
+const { updateRecord } = require(`../src/updateRecord.js`);
+const { readOperationToPerform } = require(`../src/readOperationToPerform.js`);
+const { wrongInput } = require(`../src/library`);
 
 describe(`readOperationToPerform`, function() {
   describe(`it should give function reference as the user Args`, function() {
@@ -15,6 +14,9 @@ describe(`readOperationToPerform`, function() {
         readOperationToPerform("--query"),
         giveTransactionsRecord
       );
+    });
+    it(`it should give wrong input if the option is invalid `, function() {
+      assert.strictEqual(readOperationToPerform("--que"), wrongInput);
     });
   });
 });

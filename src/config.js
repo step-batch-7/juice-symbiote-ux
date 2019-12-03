@@ -1,7 +1,4 @@
-const timeStamp = env => {
-  const time = env.date || new Date().toJSON();
-  return new Date(time);
-};
+const timeStamp = env => (env.date ? new Date(env.date) : new Date());
 
 const dataStoredPath = env => {
   const path = env.path || `./juiceTransactionsRecord.json`;

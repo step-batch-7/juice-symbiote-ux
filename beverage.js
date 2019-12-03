@@ -1,10 +1,8 @@
-const readOperationToPerform = require(`./src/readOperationToPerform.js`)
-  .readOperationToPerform;
-const updateRecord = require(`./src/updateRecord.js`).updateRecord;
-const giveTransactionsRecord = require(`./src/giveTransactionsRecord.js`)
-  .getTransQuery;
-const readFile = require(`./src/library`).readFile;
 const fs = require(`fs`);
+const { readOperationToPerform } = require(`./src/readOperationToPerform.js`);
+const { updateRecord } = require(`./src/updateRecord.js`);
+const { giveTransactionsRecord } = require(`./src/giveTransactionsRecord.js`);
+const { readFile } = require(`./src/library`);
 const { timeStamp, dataStoredPath } = require(`./src/config`);
 
 const main = function() {

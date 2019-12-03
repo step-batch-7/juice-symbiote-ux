@@ -1,5 +1,5 @@
 const assert = require(`chai`).assert;
-const updateRecord = require(`../src/updateRecord.js`).updateRecord;
+const { updateRecord } = require(`../src/updateRecord.js`);
 const path = "./testForWrite.json";
 const date = new Date();
 

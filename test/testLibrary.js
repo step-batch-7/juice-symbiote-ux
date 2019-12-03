@@ -1,7 +1,5 @@
 const assert = require(`chai`).assert;
-const lib = require(`../src/library.js`);
-const readFile = lib.readFile;
-const writeFile = lib.writeFile;
+const { readFile, writeFile, wrongInput } = require(`../src/library.js`);
 
 describe(`readFile`, function() {
   it(`it should check path given to isExist is correct, if path doesn't exist return empty object`, function() {
@@ -45,5 +43,10 @@ describe(`writeFile`, function() {
       writeFile(`correctPath`, `details of the file`, `utf8`, writer),
       `details of the file`
     );
+  });
+});
+describe(`wrongInput`, function() {
+  it("it should give wrong input if user args is invalid", function() {
+    assert.strictEqual(wrongInput(), `Wrong Input`);
   });
 });

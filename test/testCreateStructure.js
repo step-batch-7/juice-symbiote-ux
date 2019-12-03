@@ -1,5 +1,5 @@
 const assert = require(`chai`).assert;
-const createStructure = require(`../src/createStructure.js`).createStructure;
+const { createStructure } = require(`../src/createStructure.js`);
 const date = new Date();
 
 describe(`createStructure`, function() {

@@ -1,5 +1,5 @@
-const getStructure = require(`./createStructure.js`).createStructure;
-const writeFile = require(`./library`).writeFile;
+const { createStructure } = require(`./createStructure.js`);
+const { writeFile } = require(`./library`);
 
 const fillEntriesInRecord = function(details, path, fileContent, writer) {
   const initialRecord = JSON.parse(fileContent);
@@ -8,7 +8,7 @@ const fillEntriesInRecord = function(details, path, fileContent, writer) {
 };
 
 const updateRecord = function(userArgs, fileContent, path, date, writer) {
-  const details = getStructure(userArgs, date);
+  const details = createStructure(userArgs, date);
   fillEntriesInRecord(details, path, fileContent, writer);
   const title = `Transaction Recorded:\nEmployee ID,Beverage,Quantity,Date\n`;
   const message = [
@@ -19,4 +19,4 @@ const updateRecord = function(userArgs, fileContent, path, date, writer) {
   ];
   return title + message.join(`,`);
 };
-exports.updateRecord = updateRecord;
+module.exports = { updateRecord };

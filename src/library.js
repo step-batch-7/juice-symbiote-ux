@@ -9,5 +9,6 @@ const writeFile = function(path, content, encoder, writer) {
   return writer(path, content, encoder);
 };
 
-exports.readFile = readFile;
-exports.writeFile = writeFile;
+const wrongInput = () => "Wrong Input";
+
+module.exports = { readFile, writeFile, wrongInput };

@@ -7,4 +7,4 @@ const createStructure = function(userArgs, date) {
   return table;
 };
 
-exports.createStructure = createStructure;
+module.exports = { createStructure };

@@ -30,4 +30,4 @@ const giveTransactionsRecord = function(userArgs, fileContent) {
   }
   return generateQueryMessage(juiceTransactionsRecord);
 };
-exports.giveTransactionsRecord = giveTransactionsRecord;
+module.exports = { giveTransactionsRecord };
